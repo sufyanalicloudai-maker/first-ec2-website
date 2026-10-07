@@ -4,7 +4,9 @@ A static HTML/CSS website hosted on an **AWS EC2** instance, served by **Nginx**
 
 ## Screenshot
 
-![My first EC2 website running live](images/screenshot.png)
+![My first EC2 website running live](screenshot-1-website.png)
+![My first EC2 website running live](screenshot-2-website.png)
+![My first EC2 website running live](screenshot-3-website.png)
 
 ## How it works
 
