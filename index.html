@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hello from my first cloud server</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#dcebff;--dawn:#ffe6d2;--ink:#14213d;--blue:#2447f5;--mint:#12a37f;--mut:#475a7c;--disp:'Bricolage Grotesque',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--sky),var(--dawn) 80%);min-height:100vh;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:28px 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--disp);font-weight:800;font-size:1.2rem}
+.status{display:inline-flex;gap:8px;align-items:center;background:#fff;border-radius:99px;padding:6px 14px;font:600 14px Figtree,sans-serif}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--mint);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(18,163,127,.6)}70%,100%{box-shadow:0 0 0 9px rgba(18,163,127,0)}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:40px 0 64px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,7vw,5.2rem);line-height:.98;letter-spacing:-.03em;margin:0 0 22px}
+.lead{max-width:46ch;font-size:1.15rem;color:var(--mut);margin:0}
+.host{display:inline-block;margin-top:24px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font:14px ui-monospace,Menlo,Consolas,monospace}
+.host b{color:#8fb0ff}
+.cloud{width:100%;height:auto;animation:drift 8s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateY(-14px)}}
+section{padding:52px 0}
+h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em;line-height:1.1;margin:0 0 10px}
+.sub{color:var(--mut);margin:0 0 30px;max-width:56ch}
+.flow{display:grid;grid-template-columns:repeat(4,1fr)}
+.node{background:#fff;border-radius:16px;padding:18px;margin-right:28px;position:relative}
+.node:last-child{margin-right:0}
+.node:not(:last-child)::after{content:"";position:absolute;right:-28px;top:50%;width:28px;height:2px;background:var(--blue)}
+.node b{display:block;font-family:var(--disp);font-size:1.1rem}
+.node span{font-size:14px;color:var(--mut)}
+.learn{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.big{background:var(--blue);color:#fff;border-radius:28px;padding:38px;grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:260px}
+.big h3{font-family:var(--disp);font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.big p{margin:0;opacity:.9;max-width:36ch}
+.small{background:rgba(255,255,255,.72);border-radius:14px;padding:22px;border-left:4px solid var(--blue)}
+.small h3{font-family:var(--disp);margin:0 0 6px;font-size:1.15rem}
+.small p{margin:0;color:var(--mut);font-size:15px}
+pre{background:var(--ink);color:#dbe6ff;padding:24px;border-radius:14px;overflow-x:auto;font:14px/1.9 ui-monospace,Menlo,Consolas,monospace;margin:0}
+.c{color:#7e92c9}
+footer{padding:36px 0 56px;color:var(--mut);font-size:15px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media(max-width:760px){
+.hero{grid-template-columns:1fr}
+.flow{grid-template-columns:1fr;gap:30px}
+.node{margin-right:0}
+.node:not(:last-child)::after{right:auto;left:28px;top:auto;bottom:-30px;width:2px;height:30px}
+.learn{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <!-- EDIT: your name -->
+    <span>Sufyan's Cloud Lab</span>
+    <span class="status"><span class="dot"></span>Server is live</span>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Hello from the cloud.</h1>
+        <p class="lead">This page is not on my laptop. It is served by a real Linux machine I launched on AWS, running Nginx, and you just reached it over the internet.</p>
+        <div class="host">Served to you from <b id="host">this server</b></div>
+      </div>
+      <svg class="cloud" viewBox="0 0 400 270" role="img" aria-label="A cloud with a server rack inside">
+        <ellipse cx="205" cy="255" rx="130" ry="9" fill="#14213d" opacity=".08"/>
+        <g fill="#fff">
+          <circle cx="125" cy="150" r="68"/><circle cx="215" cy="108" r="90"/>
+          <circle cx="312" cy="160" r="64"/><rect x="95" y="150" width="270" height="72" rx="36"/>
+        </g>
+        <g fill="#2447f5">
+          <rect x="160" y="100" width="104" height="22" rx="6"/>
+          <rect x="160" y="128" width="104" height="22" rx="6"/>
+          <rect x="160" y="156" width="104" height="22" rx="6"/>
+        </g>
+        <g fill="#12a37f"><circle cx="176" cy="111" r="4"/><circle cx="176" cy="139" r="4"/><circle cx="176" cy="167" r="4"/></g>
+        <g fill="#fff" opacity=".7"><rect x="196" y="108" width="50" height="6" rx="3"/><rect x="196" y="136" width="50" height="6" rx="3"/><rect x="196" y="164" width="50" height="6" rx="3"/></g>
+      </svg>
+    </div>
+
+    <section>
+      <h2>How this page reached you</h2>
+      <p class="sub">Every visit follows the same short trip from your device to a file on my server.</p>
+      <div class="flow">
+        <div class="node"><b>Your browser</b><span>Asks for http://server-ip</span></div>
+        <div class="node"><b>Security group</b><span>Lets traffic in on port 80</span></div>
+        <div class="node"><b>Nginx</b><span>The web server that listens</span></div>
+        <div class="node"><b>index.html</b><span>The page you are reading</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I learned building it</h2>
+      <p class="sub">Three lessons from getting my first website online.</p>
+      <div class="learn">
+        <div class="big">
+          <h3>A server is just a computer you rent and log in to.</h3>
+          <p>I connected over SSH, installed Nginx, and put my own file in the web folder.</p>
+        </div>
+        <div class="small"><h3>Open only the ports you need</h3><p>SSH on 22 for me, HTTP on 80 for visitors. Everything else stays closed.</p></div>
+        <div class="small"><h3>Logs explain what went wrong</h3><p>When a page fails to load, the Nginx error log usually says why.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The commands behind this page</h2>
+      <p class="sub">Run on Amazon Linux 2023, over SSH.</p>
+<pre><span class="c"># install and start the web server</span>
+sudo dnf install nginx -y
+sudo systemctl enable --now nginx
+
+<span class="c"># check the config, then publish changes</span>
+sudo nginx -t
+sudo systemctl reload nginx</pre>
+    </section>
+  </main>
+
+  <footer>
+    <!-- EDIT: your name or links -->
+    Made by Sufyan as a first AWS EC2 project.
+  </footer>
+</div>
+<script>
+  document.getElementById('host').textContent =
+    location.hostname && location.protocol.startsWith('http') ? location.hostname : 'your own computer (preview)';
+</script>
+</body>
+</html>
